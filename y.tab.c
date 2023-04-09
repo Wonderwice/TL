@@ -601,7 +601,7 @@ yysymbol_name (yysymbol_kind_t yysymbol)
    STATE-NUM.  */
 static const yytype_int8 yypact[] =
 {
-      -2,     0,     2,    -4,    -8,    -7,    -8,     1,    -8,    -8,
+      -2,     0,     2,    -4,    -8,    -8,    -7,     1,    -8,    -8,
        3,    -1,     4,     5,     6,    -7,    -8
 };
 
@@ -610,7 +610,7 @@ static const yytype_int8 yypact[] =
    means the default is an error.  */
 static const yytype_int8 yydefact[] =
 {
-       0,     0,     0,     0,     1,     0,     2,     0,     5,     3,
+       0,     0,     0,     0,     1,     3,     0,     0,     5,     2,
        0,     0,     0,     0,     0,     0,     4
 };
 
@@ -658,7 +658,7 @@ static const yytype_int8 yyr1[] =
 /* YYR2[RULE-NUM] -- Number of symbols on the right-hand side of rule RULE-NUM.  */
 static const yytype_int8 yyr2[] =
 {
-       0,     2,     3,     2,     8,     1
+       0,     2,     4,     1,     8,     1
 };
 
 

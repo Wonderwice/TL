@@ -1,5 +1,5 @@
 
-#line 2 "lex.yy.c"
+#line 3 "lex.yy.c"
 
 #define  YY_INT_ALIGNED short int
 
@@ -475,7 +475,7 @@ int yy_flex_debug = 0;
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
 #line 1 "spec.lex"
-#line 478 "lex.yy.c"
+#line 479 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -694,7 +694,7 @@ YY_DECL
 	{
 #line 5 "spec.lex"
 
-#line 697 "lex.yy.c"
+#line 698 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -811,7 +811,7 @@ YY_RULE_SETUP
 #line 17 "spec.lex"
 ECHO;
 	YY_BREAK
-#line 814 "lex.yy.c"
+#line 815 "lex.yy.c"
 
 	case YY_END_OF_BUFFER:
 		{

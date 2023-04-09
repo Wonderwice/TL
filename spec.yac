@@ -7,8 +7,9 @@ void yyerror(char *) ;
 %token DOSSIER DOSSIERID FLIGHT AIRPORT DATE HOUR OWNER END
 
 %%
-dossier : DOSSIER DOSSIERID nom ;
-nom : OWNER vol ;
+billet : dossier nom vol;
+dossier : DOSSIER DOSSIERID;
+nom : OWNER ;
 vol : DATE FLIGHT AIRPORT HOUR AIRPORT HOUR HOUR vol
     | END
     ;
