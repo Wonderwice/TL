@@ -1,14 +1,17 @@
 %{
 #include <stdio.h>
-
 int yylex(void) ;
 void yyerror(char *) ;
 %}
 
-%token DOSSIER DOSSIERID
+%token DOSSIER DOSSIERID FLIGHT AIRPORT DATE HOUR OWNER END
 
 %%
-expression: DOSSIER DOSSIERID;
+dossier : DOSSIER DOSSIERID nom ;
+nom : OWNER vol ;
+vol : DATE FLIGHT AIRPORT HOUR AIRPORT HOUR HOUR vol
+    | END
+    ;
 %%
 #include "lex.yy.c"
 
