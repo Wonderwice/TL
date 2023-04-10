@@ -5,14 +5,14 @@ void yyerror(char *) ;
 %}
 
 %token DOSSIER DOSSIERID FLIGHT AIRPORT DATE HOUR OWNER END
+%define parse.error verbose
 
 %%
-billet : dossier nom vol;
-dossier : DOSSIER DOSSIERID;
-nom : OWNER ;
-vol : DATE FLIGHT AIRPORT HOUR AIRPORT HOUR HOUR vol
-    | END
-    ;
+dossier : DOSSIER DOSSIERID OWNER vol vols;
+vols : vols vol
+     |
+     ;
+vol: DATE FLIGHT AIRPORT HOUR AIRPORT HOUR HOUR;
 %%
 #include "lex.yy.c"
 

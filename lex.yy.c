@@ -350,8 +350,8 @@ static void yynoreturn yy_fatal_error ( const char* msg  );
 	(yy_hold_char) = *yy_cp; \
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
-#define YY_NUM_RULES 11
-#define YY_END_OF_BUFFER 12
+#define YY_NUM_RULES 10
+#define YY_END_OF_BUFFER 11
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -361,11 +361,11 @@ struct yy_trans_info
 	};
 static const flex_int16_t yy_accept[46] =
     {   0,
-        0,    0,   12,   10,    3,    2,   10,   10,   10,   10,
+        0,    0,   11,    9,    2,    2,    9,    9,    9,    9,
         0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-        0,    4,    0,    6,    6,    0,    8,    0,    9,    0,
-        0,    0,    4,    9,    0,    0,    0,    9,    7,    7,
-        0,    0,    1,    5,    0
+        0,    3,    0,    5,    5,    0,    7,    0,    8,    0,
+        0,    0,    3,    8,    0,    0,    0,    8,    6,    6,
+        0,    0,    1,    4,    0
     } ;
 
 static const YY_CHAR yy_ec[256] =
@@ -754,64 +754,59 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 YY_RULE_SETUP
 #line 6 "spec.lex"
-{printf("%s ",yytext); return DOSSIER;}
+{return DOSSIER;}
 	YY_BREAK
 case 2:
 /* rule 2 can match eol */
 YY_RULE_SETUP
 #line 7 "spec.lex"
-{printf("\n");}
+
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
 #line 8 "spec.lex"
-{printf(" ");}
+{return OWNER;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
 #line 9 "spec.lex"
-{printf("%s ",yytext); return OWNER;}
+{return DATE;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
 #line 10 "spec.lex"
-{printf("%s ",yytext); return DATE;}
+{return AIRPORT;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
 #line 11 "spec.lex"
-{printf("%s ",yytext); return AIRPORT;}
+{return DOSSIERID;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
 #line 12 "spec.lex"
-{printf("%s ",yytext); return DOSSIERID;}
+{return HOUR;}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
 #line 13 "spec.lex"
-{printf("%s ",yytext); return HOUR;}
+{return FLIGHT;}
+	YY_BREAK
+case YY_STATE_EOF(INITIAL):
+#line 14 "spec.lex"
+{return 0;}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 14 "spec.lex"
-{printf("%s ",yytext); return FLIGHT;}
-	YY_BREAK
-case YY_STATE_EOF(INITIAL):
 #line 15 "spec.lex"
-{return END;}
+{printf("Erreur [%s] non reconnu",yytext); return 1;}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
 #line 16 "spec.lex"
-{printf("Erreur [%s] non reconnu",yytext); return 1;}
-	YY_BREAK
-case 11:
-YY_RULE_SETUP
-#line 17 "spec.lex"
 ECHO;
 	YY_BREAK
-#line 815 "lex.yy.c"
+#line 810 "lex.yy.c"
 
 	case YY_END_OF_BUFFER:
 		{
@@ -1814,4 +1809,4 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 17 "spec.lex"
+#line 16 "spec.lex"
