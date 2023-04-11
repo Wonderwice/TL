@@ -72,8 +72,10 @@
 #include <stdio.h>
 int yylex(void) ;
 void yyerror(char *) ;
+int vols = 0, duree = 0;
+char owner[100];
 
-#line 77 "y.tab.c"
+#line 79 "y.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -169,10 +171,11 @@ enum yysymbol_kind_t
   YYSYMBOL_HOUR = 8,                       /* HOUR  */
   YYSYMBOL_OWNER = 9,                      /* OWNER  */
   YYSYMBOL_END = 10,                       /* END  */
-  YYSYMBOL_YYACCEPT = 11,                  /* $accept  */
-  YYSYMBOL_dossier = 12,                   /* dossier  */
-  YYSYMBOL_vols = 13,                      /* vols  */
-  YYSYMBOL_vol = 14                        /* vol  */
+  YYSYMBOL_11_ = 11,                       /* ':'  */
+  YYSYMBOL_YYACCEPT = 12,                  /* $accept  */
+  YYSYMBOL_dossier = 13,                   /* dossier  */
+  YYSYMBOL_vols = 14,                      /* vols  */
+  YYSYMBOL_vol = 15                        /* vol  */
 };
 typedef enum yysymbol_kind_t yysymbol_kind_t;
 
@@ -500,16 +503,16 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  4
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   15
+#define YYLAST   21
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  11
+#define YYNTOKENS  12
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  4
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  5
+#define YYNRULES  6
 /* YYNSTATES -- Number of states.  */
-#define YYNSTATES  16
+#define YYNSTATES  22
 
 /* YYMAXUTOK -- Last valid token kind.  */
 #define YYMAXUTOK   265
@@ -531,7 +534,7 @@ static const yytype_int8 yytranslate[] =
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,    11,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
@@ -559,7 +562,7 @@ static const yytype_int8 yytranslate[] =
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    11,    11,    12,    13,    15
+       0,    13,    13,    14,    15,    17,    18
 };
 #endif
 
@@ -576,7 +579,7 @@ static const char *yysymbol_name (yysymbol_kind_t yysymbol) YY_ATTRIBUTE_UNUSED;
 static const char *const yytname[] =
 {
   "\"end of file\"", "error", "\"invalid token\"", "DOSSIER", "DOSSIERID",
-  "FLIGHT", "AIRPORT", "DATE", "HOUR", "OWNER", "END", "$accept",
+  "FLIGHT", "AIRPORT", "DATE", "HOUR", "OWNER", "END", "':'", "$accept",
   "dossier", "vols", "vol", YY_NULLPTR
 };
 
@@ -602,7 +605,8 @@ yysymbol_name (yysymbol_kind_t yysymbol)
 static const yytype_int8 yypact[] =
 {
       -3,    -2,     1,    -6,    -7,    -1,     0,    -7,     2,    -1,
-      -4,    -7,     3,     4,     5,    -7
+      -4,    -7,     3,     4,     5,     7,     6,     8,    10,     9,
+      11,    -7
 };
 
 /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -611,13 +615,14 @@ static const yytype_int8 yypact[] =
 static const yytype_int8 yydefact[] =
 {
        0,     0,     0,     0,     1,     0,     0,     4,     0,     2,
-       0,     3,     0,     0,     0,     5
+       0,     3,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     5
 };
 
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-      -7,    -7,    -7,     6
+      -7,    -7,    -7,    12
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
@@ -631,34 +636,37 @@ static const yytype_int8 yydefgoto[] =
    number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const yytype_int8 yytable[] =
 {
-       1,     4,     3,     5,    12,     8,     6,     0,    10,    13,
-       0,     0,    14,    15,     0,    11
+       1,     4,     3,     5,    12,     8,     6,     0,    10,     0,
+       0,    15,    14,     0,    13,    16,    18,    17,    19,    21,
+      20,    11
 };
 
 static const yytype_int8 yycheck[] =
 {
-       3,     0,     4,     9,     8,     5,     7,    -1,     6,     6,
-      -1,    -1,     8,     8,    -1,     9
+       3,     0,     4,     9,     8,     5,     7,    -1,     6,    -1,
+      -1,     6,     8,    -1,    11,     8,     8,    11,     8,     8,
+      11,     9
 };
 
 /* YYSTOS[STATE-NUM] -- The symbol kind of the accessing symbol of
    state STATE-NUM.  */
 static const yytype_int8 yystos[] =
 {
-       0,     3,    12,     4,     0,     9,     7,    14,     5,    13,
-       6,    14,     8,     6,     8,     8
+       0,     3,    13,     4,     0,     9,     7,    15,     5,    14,
+       6,    15,     8,    11,     8,     6,     8,    11,     8,     8,
+      11,     8
 };
 
 /* YYR1[RULE-NUM] -- Symbol kind of the left-hand side of rule RULE-NUM.  */
 static const yytype_int8 yyr1[] =
 {
-       0,    11,    12,    13,    13,    14
+       0,    12,    13,    14,    14,    15,    13
 };
 
 /* YYR2[RULE-NUM] -- Number of symbols on the right-hand side of rule RULE-NUM.  */
 static const yytype_int8 yyr2[] =
 {
-       0,     2,     5,     2,     0,     7
+       0,     2,     5,     2,     0,    13,     5
 };
 
 
@@ -1391,8 +1399,14 @@ yyreduce:
   YY_REDUCE_PRINT (yyn);
   switch (yyn)
     {
+  case 5: /* vol: DATE FLIGHT AIRPORT HOUR ':' HOUR AIRPORT HOUR ':' HOUR HOUR ':' HOUR  */
+#line 17 "spec.yac"
+                                                                     {duree += yyvsp[-2] * 60; duree += yyvsp[0]; vols++;}
+#line 1406 "y.tab.c"
+    break;
 
-#line 1396 "y.tab.c"
+
+#line 1410 "y.tab.c"
 
       default: break;
     }
@@ -1616,11 +1630,12 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 16 "spec.yac"
+#line 20 "spec.yac"
 
 #include "lex.yy.c"
 
 int main(void) {
     yyparse();
+    printf("Le billet de %s comprend %d vols et dure %d minutes",owner,vols,duree);
     return 0;
 }

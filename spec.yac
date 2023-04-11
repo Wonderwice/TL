@@ -2,21 +2,22 @@
 #include <stdio.h>
 int yylex(void) ;
 void yyerror(char *) ;
+int vols = 0, duree = 0;
+char owner[100];
 %}
-
 %token DOSSIER DOSSIERID FLIGHT AIRPORT DATE HOUR OWNER END
-%define parse.error verbose
-
 %%
 dossier : DOSSIER DOSSIERID OWNER vol vols;
 vols : vols vol
      |
      ;
-vol: DATE FLIGHT AIRPORT HOUR AIRPORT HOUR HOUR;
+vol: DATE FLIGHT AIRPORT HOUR':'HOUR AIRPORT HOUR':'HOUR HOUR':'HOUR {duree += $11 * 60; duree += $13; vols++;};
+dossier : DOSSIER DOSSIERID OWNER vol vols;
 %%
 #include "lex.yy.c"
 
 int main(void) {
     yyparse();
+    printf("Le billet de %s comprend %d vols et dure %d minutes",owner,vols,duree);
     return 0;
 }
